@@ -1,5 +1,8 @@
 # Pomodoro
 
+Ceci est une application Pomodoro.
+Je suis novice en dev et surtout en React Native, c'est ma premiere application mobile, n'hesitez pas a me faire des retours s'il vous le souhaitez
+
 # React Navigation
 site : https://reactnative.dev/docs/navigation
 ```bash
