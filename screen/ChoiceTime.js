@@ -15,7 +15,7 @@ export default function ChoiceTime({navigation}) {
       alert('choisir svp');
       return;
     }else{
-      navigation.navigate('Home', {
+      navigation.navigate('Timer', {
         workTime,
         breakTime,
         numberOfSessions,

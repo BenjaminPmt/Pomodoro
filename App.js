@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import ChoiceTime from './screen/ChoiceTime';
 import Home from './screen/Home';
+import Pomodoro from './screen/Pomodoro';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -16,6 +17,8 @@ export default function App() {
     <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}} >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="ChoiceTime" component={ChoiceTime} />
+      <Stack.Screen name="Timer" component={Pomodoro} />
+
     </Stack.Navigator>
     </NavigationContainer>
   );
