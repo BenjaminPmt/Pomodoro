@@ -1,8 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
-import { useState, useEffect } from 'react';
-import Timer from '../components/Timer';
-import ButtonTimer from '../components/ButtonTimer'
-import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -18,6 +15,11 @@ export default function Home({navigation}) {
         <View style={styles.buttonContainer}>
           <Pressable style={styles.button} onPress={() => navigation.navigate("ChoiceTime")}>
           <Text style={{color :'#FFBA18', fontSize : 18}}>Commencer un Pomodoro</Text>
+          </Pressable>
+        </View>
+        <View style={styles.infoContainer}>
+          <Pressable onPress={() => navigation.navigate("Information")}>
+            <Ionicons name="information-circle-outline" size={28} color="#FFBA18" />
           </Pressable>
         </View>
     </View>
@@ -51,4 +53,8 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Centre le texte dans le bouton
     justifyContent: 'center', // Centre verticalement le texte dans le bouton
   },
+  infoContainer :{
+    bottom : '5%',
+    position : "absolute"
+  }
 });

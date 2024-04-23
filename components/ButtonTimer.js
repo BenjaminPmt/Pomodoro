@@ -1,15 +1,25 @@
-import { View, Text, Button, Pressable } from 'react-native'
+import { View, Text, Button, Pressable, StyleSheet } from 'react-native'
 import { useState } from 'react'
 import { FontAwesome6 } from '@expo/vector-icons';
-export default function ButtonTimer({startTimer, stopTimer, isTimerRunning,}) {
+import { Fontisto } from '@expo/vector-icons';
+export default function ButtonTimer({startTimer, stopTimer, isTimerRunning, returnBack}) {
 
 
   return (
+    <View style={styles.buttonContainer}>
     <Pressable onPress={isTimerRunning ? stopTimer : startTimer}>
-      <View>
-        <FontAwesome6 name={isTimerRunning ? 'pause' : 'play'} size={24} color="black" />
-      </View>
+        <FontAwesome6 name={isTimerRunning ? 'pause' : 'play'} size={28} color="#FFBA18" />
     </Pressable>
+    <Pressable onPress={returnBack}>
+    <Fontisto name="arrow-return-left" size={28} color="#FFBA18" style={{marginLeft : 20}} returnBack={returnBack} />
+    </Pressable>
+    </View>
 
   )
 }
+
+const styles = StyleSheet.create({
+  buttonContainer:{
+    flexDirection : "row"
+  }
+});

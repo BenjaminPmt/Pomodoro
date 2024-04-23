@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Choice from '../components/Choice'
 import { Ionicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
@@ -35,12 +35,12 @@ export default function ChoiceTime({navigation}) {
       <AntDesign name="arrowleft" size={24} color="#FFBA18" onPress={() =>navigation.navigate('Home')} style={{padding : 50}} />
         <View style={styles.choiceContainer}>
           <Choice titleChoice={'Focus Time'} nb1={25} nb2={30} nb3={45} 
-                choice1={() =>(setWorkTime(0.2 * 60 * 1000))}
+                choice1={() =>(setWorkTime(25 * 60 * 1000))}
                 choice2={() =>(setWorkTime(30 * 60 * 1000))}
                 choice3={() =>(setWorkTime(45 * 60 * 1000))}
           />
           <Choice titleChoice={'Break Time'} nb1={5} nb2={10} nb3={15}
-          choice1={() => setBreakTime(0.1 * 60 * 1000)}
+          choice1={() => setBreakTime(5 * 60 * 1000)}
           choice2={() => setBreakTime(10 * 60 * 1000)}
           choice3={() => setBreakTime(15 * 60 * 1000)}
           />

@@ -43,6 +43,9 @@ export default function Pomodoro({ route, navigation }) {
     alert("Vous avez terminé toutes vos sessions !"); // Afficher une alerte
   };
 
+  const returnBack = () =>{
+    navigation.navigate("ChoiceTime")
+  }
   useEffect(() => {
     if (currentWorkTime <= 0) {
       stopTimer();
@@ -69,11 +72,13 @@ export default function Pomodoro({ route, navigation }) {
   
   return (
     <View style={styles.container}>
-        <Text>C'est le moment  : {timerMode}</Text>
-        <Text>Vous etes parti pour {numberOfSessions} sessions</Text>
-        <Text>{sessionCount}</Text>
+      <View style={styles.textContainer}>
+        <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{timerMode}</Text>
+        <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{sessionCount} / {numberOfSessions}</Text>
+      </View>
+        <Text></Text>
       <Timer  timerDate={new Date(currentWorkTime)} />
-      <ButtonTimer isTimerRunning={isTimerRunning} stopTimer={stopTimer} startTimer={startTimer}/>
+      <ButtonTimer isTimerRunning={isTimerRunning} stopTimer={stopTimer} startTimer={startTimer} returnBack={returnBack}/>
     </View>
   );
 }
@@ -85,5 +90,9 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'center'
     },
-
+  textContainer : {
+    position : 'absolute',
+    top : "10%",
+    left : "10%"
+  },
   });

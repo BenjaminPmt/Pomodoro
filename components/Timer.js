@@ -6,16 +6,8 @@ export default function Timer({timerDate}) {
 
   return (
     <View>
-      <Text style={styles.textTimer}>{timerDate.getMinutes().toString().padStart(2, '0')} : {timerDate.getSeconds().toString().padStart(2,'0')}</Text>
+      <Text style={{color :'#FFBA18', fontSize : 75, fontWeight : "700"}}>{timerDate.getMinutes().toString().padStart(2, '0')}</Text>
+      <Text style={{color : '#FFBA18',  fontSize : 100, fontWeight : "700", bottom : 35}}>{timerDate.getSeconds().toString().padStart(2,'0')}</Text>
     </View>
   )
-}
-
-const styles = StyleSheet.create({
-  textTimer: {
-    color: 'white',
-    fontSize : 90,
-    fontWeight : '700',
-  },
-});
-
+};
