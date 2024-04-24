@@ -4,15 +4,18 @@ import Choice from '../components/Choice'
 import { Ionicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import ModalOneBtn from '../components/ModalOneBtn';
 export default function ChoiceTime({navigation}) {
 
   const [workTime, setWorkTime] = useState(null)
   const [breakTime, setBreakTime] = useState(null)
   const [numberOfSessions, setNumberOfSessions] = useState(null)
+  const [modal, setModal] = useState(false)
+  const [modalNoTask, setModalNoTask] = useState(false)
   
   const goToPomodoro = () => {
     if(workTime === null || breakTime === null || numberOfSessions === null){
-      alert('choisir svp');
+      setModal(true)
       return;
     }else{
       navigation.navigate('Timer', {
@@ -29,9 +32,20 @@ export default function ChoiceTime({navigation}) {
     setBreakTime(null)
     setNumberOfSessions(null)
   }
+  const backModal = () => {
+    setModal(false);
+    setModalNoTask(false)
+  }
   return (
     
     <View style={styles.container}>
+      <ModalOneBtn 
+        visible={modal}
+        titleHeader="Choisir vos options"
+        textBodyModal="Vous devez choisir les options de votre session"
+        textBtn="Retour"
+        onPressBtn={backModal}
+        />
       <AntDesign name="arrowleft" size={24} color="#FFBA18" onPress={() =>navigation.navigate('Home')} style={{padding : 50}} />
         <View style={styles.choiceContainer}>
           <Choice titleChoice={'Focus Time'} nb1={25} nb2={30} nb3={45} 
@@ -85,8 +99,9 @@ const styles = StyleSheet.create({
     viewSessionContainer:{
       height : '25%',
       width : '80%',
-      backgroundColor : '#FBFDFF',
       borderRadius : 30,
+      borderColor : "#FFBA18",
+      borderWidth : 3
     },
     textSession : {
       fontSize : 20,
