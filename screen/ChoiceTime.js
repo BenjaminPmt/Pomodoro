@@ -12,6 +12,9 @@ export default function ChoiceTime({navigation}) {
   const [numberOfSessions, setNumberOfSessions] = useState(null)
   const [modal, setModal] = useState(false)
   const [modalNoTask, setModalNoTask] = useState(false)
+  const [selectedWorkTime, setSelectedWorkTime] = useState(null);
+  const [selectedBreakTime, setSelectedBreakTime] = useState(null);
+  const [selectedSessions, setSelectedSessions] = useState(null);
   
   const goToPomodoro = () => {
     if(workTime === null || breakTime === null || numberOfSessions === null){
@@ -31,6 +34,10 @@ export default function ChoiceTime({navigation}) {
     setWorkTime(null)
     setBreakTime(null)
     setNumberOfSessions(null)
+    setSelectedBreakTime(null)
+    setSelectedSessions(null)
+    setSelectedWorkTime(null)
+
   }
   const backModal = () => {
     setModal(false);
@@ -46,22 +53,35 @@ export default function ChoiceTime({navigation}) {
         textBtn="Retour"
         onPressBtn={backModal}
         />
-      <AntDesign name="arrowleft" size={24} color="#FFBA18" onPress={() =>navigation.navigate('Home')} style={{padding : 50}} />
+      <View style={styles.returnContainer}>
+            <Pressable onPress={() => navigation.navigate("Home")}>
+                <AntDesign name="arrowleft" size={32} color="#FFBA18" />
+            </Pressable>
+        </View>
         <View style={styles.choiceContainer}>
-          <Choice titleChoice={'Focus Time'} nb1={25} nb2={30} nb3={45} 
-                choice1={() =>(setWorkTime(25 * 60 * 1000))}
-                choice2={() =>(setWorkTime(30 * 60 * 1000))}
-                choice3={() =>(setWorkTime(45 * 60 * 1000))}
+          <Choice titleChoice={'Focus Time'} nb1={15} nb2={30} nb3={45} 
+                choice1={() => { setWorkTime(15 * 60 * 1000); setSelectedWorkTime(15); }}
+                choice2={() => { setWorkTime(30 * 60 * 1000); setSelectedWorkTime(30); }}
+                choice3={() => { setWorkTime(45 * 60 * 1000); setSelectedWorkTime(45); }}
+                style1={{ backgroundColor: selectedWorkTime === 15 ? 'white' : 'transparent' }}
+        style2={{ backgroundColor: selectedWorkTime === 30 ? 'white' : 'transparent' }}
+        style3={{ backgroundColor: selectedWorkTime === 45 ? 'white' : 'transparent' }}
           />
           <Choice titleChoice={'Break Time'} nb1={5} nb2={10} nb3={15}
-          choice1={() => setBreakTime(5 * 60 * 1000)}
-          choice2={() => setBreakTime(10 * 60 * 1000)}
-          choice3={() => setBreakTime(15 * 60 * 1000)}
+          choice1={() => {setBreakTime(5 * 60 * 1000); setSelectedBreakTime(5);}}
+          choice2={() => {setBreakTime(10 * 60 * 1000); setSelectedBreakTime(10)}}
+          choice3={() => {setBreakTime(15 * 60 * 1000); setSelectedBreakTime(15)}}
+          style1={{ backgroundColor: selectedBreakTime === 5 ? 'white' : 'transparent' }}
+        style2={{ backgroundColor: selectedBreakTime === 10 ? 'white' : 'transparent' }}
+        style3={{ backgroundColor: selectedBreakTime === 15 ? 'white' : 'transparent' }}
           />
           <Choice titleChoice={'Repetitions'} nb1={1} nb2={2} nb3={3}
-          choice1={() => setNumberOfSessions(1)}
-          choice2={() => setNumberOfSessions(2)}
-          choice3={() => setNumberOfSessions(3)}
+          choice1={() => {setNumberOfSessions(1);setSelectedSessions(1);}}
+          choice2={() => {setNumberOfSessions(2);setSelectedSessions(2);}}
+          choice3={() => {setNumberOfSessions(3);setSelectedSessions(3);}}
+          style1={{ backgroundColor: selectedSessions === 1 ? 'white' : 'transparent' }}
+        style2={{ backgroundColor: selectedSessions === 2 ? 'white' : 'transparent' }}
+        style3={{ backgroundColor: selectedSessions === 3 ? 'white' : 'transparent' }}
           />
         </View>
         <View style={styles.viewSessionContainer}>
@@ -71,13 +91,13 @@ export default function ChoiceTime({navigation}) {
               <Text style={styles.textViewSession}>Break time : {breakTime ? `${breakTime / (60 * 1000)} minutes` : "Pas de repos choisi"} </Text>
               <Text style={styles.textViewSession}>Repetitions time : {numberOfSessions ? `${numberOfSessions } repetition(s)` : "Pas de repetition choisi"} </Text>
             </View>
-            <Pressable onPress={resetSession}>
-              <Fontisto name="arrow-return-left" size={30} color="#FFBA18" style={{textAlign : 'center', top : '100%'}}  />
+            <Pressable onPress={resetSession} >
+              <Fontisto name="arrow-return-left" size={30} color="#FFBA18" style={{textAlign:'center', marginTop: 50 }}/>
             </Pressable>
       </View>
       <View style={styles.startSessionContainer}>
             <Pressable onPress={goToPomodoro}>
-              <Text style={{color :'#FFBA18', fontSize : 18}}><Ionicons name="play-circle" size={65} color="#FFBA18" /></Text>
+              <Text style={{color :'#FFBA18', fontSize : 18}}><AntDesign name="playcircleo" size={60} color="#FFBA18" /></Text>
             </Pressable>
         </View>
     </View>
@@ -89,6 +109,7 @@ const styles = StyleSheet.create({
         flex : 1,
         backgroundColor : '#1F2D5C',
         alignItems : 'center',
+        justifyContent : 'center'
     },
     choiceContainer :{
         backgroundColor : '#1F2D5C',
@@ -97,11 +118,11 @@ const styles = StyleSheet.create({
         justifyContent : 'center'
     },
     viewSessionContainer:{
-      height : '25%',
+      height : '30%',
       width : '80%',
       borderRadius : 30,
       borderColor : "#FFBA18",
-      borderWidth : 3
+      borderWidth : 3,
     },
     textSession : {
       fontSize : 20,
@@ -122,6 +143,14 @@ const styles = StyleSheet.create({
         marginTop : 15,
     },
     startSessionContainer : {
-      marginTop : 30,
-    }
+      marginTop : 50,
+    },
+    returnContainer :{
+      position : 'absolute',
+      left : "10%",
+      top : '5%'
+  },
+  selected: {
+    backgroundColor: 'white', // Fond blanc pour le choix sélectionné
+  },
   });

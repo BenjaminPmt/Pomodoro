@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Pressable, TouchableHighlight } from 'react-native'
 import { useState } from 'react';
-export default function Choice({nb1, nb2, nb3, titleChoice, choice1, choice2, choice3}) {
+export default function Choice({nb1, nb2, nb3, titleChoice, choice1, choice2, choice3, style1, style2, style3}) {
   const [pressed, setPressed] = useState(null);
 
 
@@ -9,13 +9,18 @@ export default function Choice({nb1, nb2, nb3, titleChoice, choice1, choice2, ch
     <View>
         <Text style={styles.titleChoice}>{titleChoice}</Text>
       <View style={styles.choiceContainer}>
-          <Pressable style={[styles.containerTime, pressed === 'choice1' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice1'); choice1();}} >
+          {/* <Pressable style={[styles.containerTime, pressed === 'choice1' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice1'); choice1();}} > */}
+          <Pressable style={[styles.containerTime, style1]} onPress={choice1} >
+
             <Text style={styles.text}>{nb1}</Text>
           </Pressable>
-          <Pressable style={[styles.containerTime, pressed === 'choice2' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice2'); choice2();}} >
+          {/* <Pressable style={[styles.containerTime, pressed === 'choice2' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice2'); choice2();}} > */}
+          <Pressable style={[styles.containerTime, style2]} onPress={choice2}>
+
             <Text style={styles.text}>{nb2}</Text>
           </Pressable>
-          <Pressable style={[styles.containerTime, pressed === 'choice3' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice3'); choice3();}}>
+          <Pressable style={[styles.containerTime, style3]} onPress={choice3}>
+          {/* <Pressable style={[styles.containerTime, pressed === 'choice3' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice3'); choice3();}}> */}
             <Text style={styles.text} >{nb3}</Text>
           </Pressable>
       </View>
