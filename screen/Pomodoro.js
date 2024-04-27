@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
 import Timer from '../components/Timer';
 import ButtonTimer from '../components/ButtonTimer';
+import { Audio } from 'expo-av'
 
 export default function Pomodoro({ route, navigation }) {
   // Extraction des paramètres passés à la route Pomodoro
@@ -13,7 +14,26 @@ export default function Pomodoro({ route, navigation }) {
   // isTimerRunning: Indique si le minuteur est actif.
   const [isTimerRunning, setIsTimerRunning] = useState(false)
   const [timerMode, setTimerMode] = useState("Focus")
+  const [sound, setSound] = useState();
   
+  async function playSound() {
+    console.log('Loading Sound');
+    const { sound } = await Audio.Sound.createAsync( require('../assets/completed.mp3')
+    );
+    setSound(sound);
+
+    console.log('Playing Sound');
+    await sound.playAsync();
+  }
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log('Unloading Sound');
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   const startTimer = () =>{
     console.log('start pomodoro')
     console.log(workTime, breakTime, numberOfSessions)
@@ -41,6 +61,7 @@ export default function Pomodoro({ route, navigation }) {
     setTimerMode("Focus");            // Réinitialiser le mode à Focus
     setSessionCount(0);               // Réinitialiser le compteur de sessions
     alert("Vous avez terminé toutes vos sessions !"); // Afficher une alerte
+    playSound()
   };
 
   const returnBack = () =>{
@@ -65,6 +86,7 @@ export default function Pomodoro({ route, navigation }) {
         setTimerMode(nextMode);
         setCurrentWorkTime(nextTime);
         startTimer();
+        playSound()
       }
     }
   }, [currentWorkTime, sessionCount, timerMode, workTime, breakTime, numberOfSessions]);

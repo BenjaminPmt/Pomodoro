@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { useState } from 'react';
 import Choice from '../components/Choice'
-import { Ionicons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import ModalOneBtn from '../components/ModalOneBtn';
+import { FontAwesome6 } from '@expo/vector-icons';
 export default function ChoiceTime({navigation}) {
 
   const [workTime, setWorkTime] = useState(null)
@@ -92,7 +92,7 @@ export default function ChoiceTime({navigation}) {
               <Text style={styles.textViewSession}>Repetitions time : {numberOfSessions ? `${numberOfSessions } repetition(s)` : "Pas de repetition choisi"} </Text>
             </View>
             <Pressable onPress={resetSession} >
-              <Fontisto name="arrow-return-left" size={30} color="#FFBA18" style={{textAlign:'center', marginTop: 50 }}/>
+              <FontAwesome6 name="arrow-rotate-left" size={30} color="#FFBA18" style={{textAlign:'center', marginTop: 50 }}/>
             </Pressable>
       </View>
       <View style={styles.startSessionContainer}>
