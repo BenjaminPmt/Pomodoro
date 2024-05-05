@@ -8,12 +8,12 @@ export default function Information({navigation}) {
                 <AntDesign name="arrowleft" size={32} color="#FFBA18" />
             </Pressable>
         </View>
-            <Text style={styles.title}>Qu'est ce que la methode Pomorodo ? </Text>
+            <Text style={styles.title}>Qu'est ce que la méthode Pomorodo ? </Text>
             <View style={styles.textContainer}>
-                <Text style={styles.text}> La méthode Pomodoro est une technique de gestion du temps.
-                    Elle consiste à diviser le travail en périodes de concentration de votre choix. La periode la plus frequente est 25 minutes
-                    de concentration et 5 minutes de pause. Cette méthode aide à améliorer la concentration et à éviter la fatigue, tout en permettant
-                    de suivre précisément le temps consacré à chaque tâche.
+                <Text style={styles.text}>
+                La méthode Pomodoro est une technique de gestion du temps. Elle consiste à diviser le travail en périodes de concentration
+                 de votre choix. La période la plus fréquente est de 25 minutes de concentration suivies de 5 minutes de pause. Cette méthode 
+                 aide à améliorer la concentration et à éviter la fatigue, tout en permettant de suivre précisément le temps consacré à chaque tâche.
                 </Text>
             </View>
             <View style={styles.socialContainer}>
