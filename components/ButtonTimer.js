@@ -11,7 +11,7 @@ export default function ButtonTimer({startTimer, stopTimer, isTimerRunning, retu
         <FontAwesome6 name={isTimerRunning ? 'pause' : 'play'} size={28} color="#FFBA18" />
     </Pressable>
     <Pressable onPress={returnBack}>
-    <FontAwesome6 name="arrow-rotate-left" size={28} color="#FFBA18" style={{marginLeft : 70}} returnBack={returnBack} />
+    {/* <FontAwesome6 name="arrow-rotate-left" size={28} color="#FFBA18" style={{marginLeft : 70}} returnBack={returnBack} /> */}
     </Pressable>
     </View>
 
