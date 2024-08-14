@@ -60,7 +60,7 @@ export default function ChoiceTime({navigation}) {
         </View>
         <View style={styles.choiceContainer}>
           <Choice titleChoice={'Travail'} nb1={15} nb2={30} nb3={45} 
-                choice1={() => { setWorkTime(0.1 * 60 * 1000); setSelectedWorkTime(15); }}
+                choice1={() => { setWorkTime(15 * 60 * 1000); setSelectedWorkTime(15); }}
                 choice2={() => { setWorkTime(30 * 60 * 1000); setSelectedWorkTime(30); }}
                 choice3={() => { setWorkTime(45 * 60 * 1000); setSelectedWorkTime(45); }}
                 style1={{ backgroundColor: selectedWorkTime === 15 ? 'white' : 'transparent' }}
@@ -68,7 +68,7 @@ export default function ChoiceTime({navigation}) {
         style3={{ backgroundColor: selectedWorkTime === 45 ? 'white' : 'transparent' }}
           />
           <Choice titleChoice={'Repos'} nb1={5} nb2={10} nb3={15}
-          choice1={() => {setBreakTime(0.1 * 60 * 1000); setSelectedBreakTime(5);}}
+          choice1={() => {setBreakTime(5 * 60 * 1000); setSelectedBreakTime(5);}}
           choice2={() => {setBreakTime(10 * 60 * 1000); setSelectedBreakTime(10)}}
           choice3={() => {setBreakTime(15 * 60 * 1000); setSelectedBreakTime(15)}}
           style1={{ backgroundColor: selectedBreakTime === 5 ? 'white' : 'transparent' }}
