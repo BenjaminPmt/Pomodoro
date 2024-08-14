@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, Text, StyleSheet, Alert, Pressable } from 'react-native';
 import Timer from '../components/Timer';
 import ButtonTimer from '../components/ButtonTimer';
 import { Audio } from 'expo-av'
+import { AntDesign } from '@expo/vector-icons';
+import ModalOneBtn from '../components/ModalOneBtn';
 
 export default function Pomodoro({ route, navigation }) {
   // Extraction des paramètres passés à la route Pomodoro
@@ -15,6 +17,8 @@ export default function Pomodoro({ route, navigation }) {
   const [isTimerRunning, setIsTimerRunning] = useState(false)
   const [timerMode, setTimerMode] = useState("Focus")
   const [sound, setSound] = useState();
+  const [modal, setModal] = useState(false)
+  const [modalNoTask, setModalNoTask] = useState(false)
   
   async function playSound() {
     console.log('Loading Sound');
@@ -60,8 +64,8 @@ export default function Pomodoro({ route, navigation }) {
     setCurrentWorkTime(workTime);     // Réinitialiser le temps de travail pour une future utilisation
     setTimerMode("Focus");            // Réinitialiser le mode à Focus
     setSessionCount(0);               // Réinitialiser le compteur de sessions
-    alert("Vous avez terminé toutes vos sessions !"); // Afficher une alerte
     playSound()
+    setModal(true)
   };
 
   const returnBack = () =>{
@@ -91,9 +95,23 @@ export default function Pomodoro({ route, navigation }) {
     }
   }, [currentWorkTime, sessionCount, timerMode, workTime, breakTime, numberOfSessions]);
   
-  
+  const backModal = () => {
+    setModal(false);
+    setModalNoTask(false)
+  }
   return (
     <View style={styles.container}>
+       <ModalOneBtn 
+        visible={modal}
+        textBodyModal="Votre session de Pomodoro est terminée"
+        textBtn="Ok"
+        onPressBtn={backModal}
+        />
+      <View style={styles.returnContainer}>
+            <Pressable onPress={() => navigation.navigate("ChoiceTime")}>
+                <AntDesign name="arrowleft" size={32} color="#FFBA18" />
+            </Pressable>
+        </View>
       <View style={styles.textContainer}>
         <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{timerMode}</Text>
         <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{sessionCount} / {numberOfSessions}</Text>
@@ -114,7 +132,12 @@ const styles = StyleSheet.create({
     },
   textContainer : {
     position : 'absolute',
-    top : "10%",
+    top : "12%",
     left : "10%"
   },
+  returnContainer :{
+    position : 'absolute',
+    left : "10%",
+    top : '5%'
+},
   });
