@@ -9,18 +9,13 @@ export default function Choice({nb1, nb2, nb3, titleChoice, choice1, choice2, ch
     <View>
         <Text style={styles.titleChoice}>{titleChoice}</Text>
       <View style={styles.choiceContainer}>
-          {/* <Pressable style={[styles.containerTime, pressed === 'choice1' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice1'); choice1();}} > */}
           <Pressable style={[styles.containerTime, style1]} onPress={choice1} >
-
             <Text style={styles.text}>{nb1}</Text>
           </Pressable>
-          {/* <Pressable style={[styles.containerTime, pressed === 'choice2' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice2'); choice2();}} > */}
           <Pressable style={[styles.containerTime, style2]} onPress={choice2}>
-
             <Text style={styles.text}>{nb2}</Text>
           </Pressable>
           <Pressable style={[styles.containerTime, style3]} onPress={choice3}>
-          {/* <Pressable style={[styles.containerTime, pressed === 'choice3' && { backgroundColor: 'white' }]} onPress={() => {setPressed('choice3'); choice3();}}> */}
             <Text style={styles.text} >{nb3}</Text>
           </Pressable>
       </View>
@@ -37,8 +32,9 @@ const styles = StyleSheet.create({
         borderRadius : 15,
       },
       containerTime : {
-        width : '15%',
-        borderRadius : 50,
+        height : 75,
+        width : 75,
+        borderRadius : 10,
         justifyContent : 'center',
         alignItems : 'center',
         borderColor : '#FFBA18',
@@ -53,6 +49,7 @@ const styles = StyleSheet.create({
       },
       text : {
         color : '#FFBA18',
+        fontSize : 30,
       },
       selected: {
         backgroundColor: 'white', // Fond blanc pour le choix sélectionné

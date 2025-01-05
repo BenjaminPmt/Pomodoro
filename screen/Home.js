@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '../Constants';
 
 
 
@@ -9,17 +10,17 @@ export default function Home({navigation}) {
     
     <View style={styles.container}>
       <View style={styles.textContainer}>
-        <Text style={{color : '#FFBA18',  fontSize : 25, fontWeight : "700"}}>Concentration</Text>
-        <Text style={{color :'#FFBA18', fontSize : 18}}>Ne laissez personne vous distraire</Text>
+        <Text style={{color : Colors.BLUE,  fontSize : 25, fontWeight : "700"}}>Concentration</Text>
+        <Text style={{color :Colors.BLUE, fontSize : 18}}>Ne laissez personne vous distraire</Text>
       </View>
         <View style={styles.buttonContainer}>
           <Pressable style={styles.button} onPress={() => navigation.navigate("ChoiceTime")}>
-          <Text style={{color :'#FFBA18', fontSize : 18}}>Commencer un Pomodoro</Text>
+          <Text style={{color :Colors.BLUE, fontSize : 18}}>Commencer un Pomodoro</Text>
           </Pressable>
         </View>
         <View style={styles.infoContainer}>
           <Pressable onPress={() => navigation.navigate("Information")}>
-            <Ionicons name="information-circle-outline" size={28} color="#FFBA18" />
+            <Ionicons name="information-circle-outline" size={28} color={Colors.BLUE} />
           </Pressable>
         </View>
     </View>
@@ -28,7 +29,7 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
   container: {
       flex : 1,
-      backgroundColor : '#1F2D5C',
+      backgroundColor : Colors.BEIGE,
       justifyContent: 'center', // Ajouté pour centrer verticalement dans le conteneur
     alignItems: 'center', // Ajouté pour centrer horizontalement dans le conteneur
   },
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     height : 50,
     borderRadius : 30,
     borderWidth : 3,
-    borderColor : '#FFBA18',
+    borderColor : Colors.BLUE,
     alignItems: 'center', // Centre le texte dans le bouton
     justifyContent: 'center', // Centre verticalement le texte dans le bouton
   },

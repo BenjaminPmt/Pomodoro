@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import Colors from '../Constants';
+
 export default function Information({navigation}) {
   return (
     <View style={styles.container}>
         <View style={styles.returnContainer}>
             <Pressable onPress={() => navigation.navigate("Home")}>
-                <AntDesign name="arrowleft" size={32} color="#FFBA18" />
+                <AntDesign name="arrowleft" size={32} color={Colors.BLUE} />
             </Pressable>
         </View>
             <Text style={styles.title}>Qu'est ce que la méthode Pomorodo ? </Text>
@@ -17,8 +19,8 @@ export default function Information({navigation}) {
                 </Text>
             </View>
             <View style={styles.socialContainer}>
-                <AntDesign name="github" size={28} color="#FFBA18" />
-                <Text style={{fontSize : 16, color : '#FFBA18', fontWeight:'700', margin : 4, marginLeft :10}}>Benjamin Pmt</Text>
+                <AntDesign name="github" size={28} color={Colors.BLUE} />
+                <Text style={{fontSize : 16, color :Colors.BLUE, fontWeight:'700', margin : 4, marginLeft :10}}>Benjamin Pmt</Text>
             </View>
     </View>
   )
@@ -27,7 +29,7 @@ export default function Information({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex : 1,
-        backgroundColor : '#1F2D5C',
+        backgroundColor : Colors.BEIGE,
         alignItems : 'center',
     },
     returnContainer :{
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
         top : '15%',
         fontSize : 20,
         fontWeight : "700",
-        color : '#FFBA18'
+        color : Colors.BLUE,
     },
     textContainer : {
         width : '90%',
@@ -50,7 +52,7 @@ const styles = StyleSheet.create({
     },
     text:{
         fontSize : 16,
-        color : '#FFBA18',
+        color : Colors.BLUE,
         textAlign : 'justify',
         lineHeight : 24,
     },

@@ -5,6 +5,8 @@ import { Fontisto } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import ModalOneBtn from '../components/ModalOneBtn';
 import { FontAwesome6 } from '@expo/vector-icons';
+import Colors from '../Constants';
+
 export default function ChoiceTime({navigation}) {
 
   const [workTime, setWorkTime] = useState(null)
@@ -92,7 +94,7 @@ export default function ChoiceTime({navigation}) {
               <Text style={styles.textViewSession}>Répétitions : {numberOfSessions ? `${numberOfSessions } répétition(s)` : "Aucune répétiton"} </Text>
             </View>
             <Pressable onPress={resetSession} >
-              <FontAwesome6 name="arrow-rotate-left" size={30} color="#FFBA18" style={{textAlign:'center', marginTop: window.width >400 ? 50 : 20 }}/>
+              <FontAwesome6 name="arrow-rotate-left" size={30} color="#FFBA18" style={{textAlign:'center', marginTop: window.width >300 ? 50 : 20 }}/>
             </Pressable>
       </View>
       <View style={styles.startSessionContainer}>
@@ -107,12 +109,12 @@ const window = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
         flex : 1,
-        backgroundColor : '#1F2D5C',
+        backgroundColor : Colors.BEIGE,
         alignItems : 'center',
         justifyContent : 'center'
     },
     choiceContainer :{
-        backgroundColor : '#1F2D5C',
+        backgroundColor : Colors.BEIGE,
         height : '45%',
         alignItems : 'center',
         justifyContent : 'center'

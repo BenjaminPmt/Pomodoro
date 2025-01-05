@@ -5,6 +5,9 @@ import ButtonTimer from '../components/ButtonTimer';
 import { Audio } from 'expo-av'
 import { AntDesign } from '@expo/vector-icons';
 import ModalOneBtn from '../components/ModalOneBtn';
+import Colors from '../Constants';
+import PomodoroMode from '../components/PomodoroMode';
+
 
 export default function Pomodoro({ route, navigation }) {
   // Extraction des paramètres passés à la route Pomodoro
@@ -109,16 +112,12 @@ export default function Pomodoro({ route, navigation }) {
         />
       <View style={styles.returnContainer}>
             <Pressable onPress={() => navigation.navigate("ChoiceTime")}>
-                <AntDesign name="arrowleft" size={32} color="#FFBA18" />
+                <AntDesign name="arrowleft" size={40} color={Colors.BEIGE} />
             </Pressable>
         </View>
-      <View style={styles.textContainer}>
-        <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{timerMode}</Text>
-        <Text style={{fontSize : 20, color : '#FFBA18', fontWeight : '700'}}>{sessionCount} / {numberOfSessions}</Text>
-      </View>
-        <Text></Text>
       <Timer  timerDate={new Date(currentWorkTime)} />
       <ButtonTimer isTimerRunning={isTimerRunning} stopTimer={stopTimer} startTimer={startTimer} returnBack={returnBack}/>
+      <PomodoroMode timerMode={timerMode} numberOfSessions={numberOfSessions} sessionCount={sessionCount} />
     </View>
   );
 }
@@ -126,18 +125,13 @@ export default function Pomodoro({ route, navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex : 1,
-        backgroundColor : '#1F2D5C',
+        backgroundColor : Colors.GREEN,
         alignItems : 'center',
         justifyContent : 'center'
     },
-  textContainer : {
-    position : 'absolute',
-    top : "12%",
-    left : "10%"
-  },
   returnContainer :{
     position : 'absolute',
     left : "10%",
-    top : '5%'
+    top : '10%'
 },
   });
